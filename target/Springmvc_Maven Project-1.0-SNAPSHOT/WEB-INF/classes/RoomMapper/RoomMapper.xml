@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.usst.mapper.RoomMapper">
+    <select id="SelectAll" resultType="com.usst.pojo.Room">
+        select * from room
+    </select>
+
+    <select id="SelectByStatus"  resultType="com.usst.pojo.Room">
+        select * from room where status=1
+    </select>
+    <select id="UpdateByDate" >
+        update room set status=2, in_data=#{0},out_data=#{1} ,costumer=#{2} where id=#{3}
+    </select>
+
+    <select id="SelectByPrice" parameterType="int" resultType="com.usst.pojo.Room">
+        select * from room where price &lt;= #{price} and status=1
+    </select>
+</mapper>
