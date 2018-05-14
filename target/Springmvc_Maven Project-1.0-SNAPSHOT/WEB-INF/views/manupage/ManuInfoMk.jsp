@@ -21,7 +21,7 @@
 </head>
 <body background="../../../img/background/bk2.jpg">
 <div style="text-align: center">
-    <p  style="color:#FFD700;font-size: 30px;font-family: 宋体;font-weight: bold;">欢迎您,${sessionScope.user.name},请完善您的信息</p>
+    <p  style="color:lightskyblue;font-size: 30px;font-family: 宋体;font-weight: bold;">欢迎您,${sessionScope.user.name},请完善您的信息</p>
     <img src="${sessionScope.user.src}" style="width:10%;height:20%">
 
 

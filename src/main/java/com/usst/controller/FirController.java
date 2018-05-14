@@ -1,7 +1,9 @@
 package com.usst.controller;
 
+import com.usst.dao.CountDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -11,22 +13,27 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(value="/demo")
 
-@SessionAttributes(value="code")
+@SessionAttributes(value={"username"})
 public class FirController {
-    @RequestMapping(value="/facebook")
-    public ModelAndView MavenDemo(ModelAndView mv)
+
+
+
+    @RequestMapping("logindemo")
+    public  ModelAndView LoginDemo(ModelAndView mv)
     {
-        String code="code";
-        mv.addObject("code",code);
-        mv.setViewName("welcomepage/hello");
+        mv.setViewName("welcomepage/page");
         return mv;
     }
-    @RequestMapping("register")
-    public  ModelAndView Register(ModelAndView mv)
+    @RequestMapping("search")
+    public ModelAndView SearchDemo(ModelAndView mv, @RequestParam(value="id")int id) throws Exception
     {
-        mv.setViewName("welcomepage/register");
-        return  mv;
+        mv.setViewName("welcomepage/out");
+        CountDao countDao=new CountDao();
+        String username=countDao.SelectById(id);
+        mv.addObject("username",username);
+        return mv;
     }
+
 
 
 }
